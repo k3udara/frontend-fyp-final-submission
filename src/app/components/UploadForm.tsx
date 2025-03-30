@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL
+
 export default function UploadForm() {
   const [content, setContent] = useState("")
   const [response, setResponse] = useState("")
@@ -9,7 +11,7 @@ export default function UploadForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const res = await fetch("http://127.0.0.1:8000/upload", {
+      const res = await fetch(`${BACKEND_URL}/upload`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

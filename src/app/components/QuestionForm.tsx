@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL
+
 export default function QuestionForm() {
   const [question, setQuestion] = useState("")
   const [accessLevel, setAccessLevel] = useState("")
@@ -10,7 +12,7 @@ export default function QuestionForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
-      const res = await fetch("http://127.0.0.1:8000/query", {
+      const res = await fetch(`${BACKEND_URL}/query`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
